@@ -10,6 +10,8 @@ let spans = document.querySelectorAll(".prog span");
 
 let secion4 = document.querySelector(".price");
 
+let secion5 = document.querySelector(".contact");
+
 window.onscroll = function () {
   if (window.scrollY >= section3.offsetTop - 400) {
     cont.style.transform = "scale(1)";
@@ -27,5 +29,9 @@ window.onscroll = function () {
 
   if (window.scrollY >= secion4.offsetTop - 400) {
     secion4.style.transform = "scale(1)";
+  }
+
+  if (window.scrollY >= secion5.offsetTop - 100) {
+    secion5.style.opacity = "1";
   }
 };
