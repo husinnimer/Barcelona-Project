@@ -11,10 +11,10 @@
   padding: 0;
   margin: 0;
 }
-/* html {
+html {
   scroll-behavior: smooth;
-  width: 100%;
-} */
+}
+
 body {
   font-family: "Open Sans", sans-serif;
 }
@@ -218,8 +218,11 @@ header nav .form i {
 }
 
 @media (max-width: 700px) {
-  .content-text {
-    width: 100%;
+  @keyframes der {
+    to {
+      width: 100%;
+      height: fit-content;
+    }
   }
 }
 
@@ -333,7 +336,6 @@ header nav .form i {
   background-color: var(--transparentColor);
   flex: 0;
   z-index: 1;
-  /* width: 0; */
   transition: flex 2s;
 }
 
@@ -488,12 +490,23 @@ header nav .form i {
   background-color: black;
   color: white;
   padding: 20px;
+  cursor: pointer;
 }
 
 .information .container {
   padding: 100px 0;
   display: flex;
   gap: 40px;
+}
+
+@media (max-width: 700px) {
+  .information .container {
+    flex-direction: column;
+  }
+  .information .container .first,
+  .information .container .second {
+    transform: scale(0.8);
+  }
 }
 
 .first,
@@ -628,13 +641,19 @@ header nav .form i {
 .price {
   display: flex;
   align-items: center;
+  justify-content: center;
   column-gap: 30px;
   transform: scale(0.1);
   transition: transform 2s;
 }
 
-.price1 {
-  width: 25%;
+@media (max-width: 700px) {
+  .price {
+    flex-direction: column;
+  }
+  .price1 {
+    width: 100%;
+  }
 }
 
 .price1 div {
@@ -643,6 +662,23 @@ header nav .form i {
   padding: 20px;
   text-align: center;
   background-color: #dddddd5c;
+  position: relative;
+}
+
+.price1 div:first-child::before {
+  content: "$";
+  position: absolute;
+  left: calc(50% - 50px);
+  top: 10px;
+  font-size: 20px;
+}
+
+.price1 div:first-child::after {
+  content: "/Mo";
+  position: absolute;
+  right: calc(50% - 60px);
+  bottom: -10px;
+  font-size: 20px;
 }
 
 .price1 div:first-child {
@@ -670,6 +706,7 @@ header nav .form i {
   color: white;
   border: none;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 .price1 div button:hover {
@@ -678,20 +715,20 @@ header nav .form i {
   border: 1px solid var(--mainColor);
 }
 
-.contact {
+.contact-price {
   margin: auto;
   width: fit-content;
   position: relative;
 }
 
-.contact p {
+.contact-price p {
   margin: 20px;
   text-align: center;
   font-size: 20px;
   font-weight: bold;
 }
 
-.contact button {
+.contact-price button {
   margin-left: 50%;
   transform: translateX(-50%);
   padding: 20px;
@@ -699,9 +736,10 @@ header nav .form i {
   color: white;
   border: none;
   transition: 0.5s;
+  cursor: pointer;
 }
 
-.contact button:hover {
+.contact-price button:hover {
   background-color: white;
   color: var(--mainColor);
   border: 1px solid var(--mainColor);
@@ -755,6 +793,7 @@ form i::before {
   border-width: 1px 1px 1px 0;
   border-color: white;
   border-style: solid;
+  cursor: pointer;
 }
 
 .emailSection p {
@@ -772,6 +811,98 @@ form i::before {
   }
 }
 
+.contact {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.contact .content {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+  .contact .content {
+    flex-direction: column;
+  }
+}
+
+.contact .content form {
+  flex-basis: 70%;
+}
+
+.contact .content form .mian-input {
+  padding: 20px;
+  display: block;
+  border: 1px solid #ccc;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.contact .content form .mian-input:focus {
+  outline: none;
+}
+
+.contact .content form textarea.mian-input {
+  height: 200px;
+}
+
+.contact .content form input[type="submit"] {
+  background-color: var(--main--color);
+  padding: 20px;
+  color: white;
+  border: none;
+  display: flex;
+  margin-left: auto;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.contact .content .info {
+  flex-basis: 25%;
+}
+
+@media (max-width: 767px) {
+  .contact .content .info {
+    order: -1;
+    text-align: center;
+  }
+}
+
+.contact .content .info h4 {
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.contact .content .info .phone {
+  display: block;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.contact .content .info h4:nth-of-type(2) {
+  margin-top: 90px;
+}
+
+@media (max-width: 767px) {
+  .contact .content .info h4:nth-of-type(2) {
+    margin-top: 30px;
+  }
+}
+
+.contact .content .info address {
+  color: #777;
+  line-height: 2;
+}
+
+@media (max-width: 767px) {
+  .contact .content .info address {
+    margin-bottom: 30px;
+  }
+}
+
 .logo1 {
   width: 100px;
 }
@@ -784,6 +915,7 @@ form i::before {
   position: relative;
   color: white;
   text-align: center;
+  height: 100vh;
 }
 
 .footer::before {
@@ -815,6 +947,11 @@ form i::before {
 
 .footer .social-icons i {
   padding: 20px;
+}
+
+.footer .social-icons i:hover {
+  color: var(--main--color);
+  transition: 0.4s;
 }
 
 .footer .copyright {
