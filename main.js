@@ -12,6 +12,10 @@ let secion4 = document.querySelector(".price");
 
 let secion5 = document.querySelector(".contact");
 
+let secionVedio = document.querySelector(".vedio");
+let div1 = document.querySelector(".div1");
+let child1 = document.querySelector(".child");
+
 window.onscroll = function () {
   if (window.scrollY >= section3.offsetTop - 400) {
     cont.style.transform = "scale(1)";
@@ -33,5 +37,9 @@ window.onscroll = function () {
 
   if (window.scrollY >= secion5.offsetTop - 100) {
     secion5.style.opacity = "1";
+  }
+  if (window.scrollY >= secionVedio.offsetTop - 200) {
+    div1.style.width = "100%";
+    child1.style.opacity = "1";
   }
 };

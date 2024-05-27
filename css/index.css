@@ -49,16 +49,10 @@ ul {
 
 /*start header*/
 header {
-  position: fixed;
+  position: absolute;
   left: 0;
   width: 100%;
   z-index: 2;
-}
-
-@media (max-width: 700px) {
-  header {
-    position: absolute;
-  }
 }
 
 header .container {
@@ -69,7 +63,7 @@ header .container {
   min-height: 97px;
   opacity: 0;
   animation: der3 2s ease forwards;
-  background-color: rgba(255, 0, 0, 0.363);
+  background-color: var(--transparentColor);
   border-radius: 10px;
 }
 
@@ -474,7 +468,7 @@ header nav .form i {
 }
 
 .div1 {
-  width: 100%;
+  width: 0;
   height: 300px;
   background-color: var(--transparentColor);
   position: absolute;
@@ -484,6 +478,7 @@ header nav .form i {
   justify-content: center;
   align-items: center;
   color: white;
+  transition: width 3s;
 }
 
 .child {
@@ -491,6 +486,9 @@ header nav .form i {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  transition: opacity 2s;
+  transition-delay: 3s;
 }
 
 .but {
@@ -603,7 +601,7 @@ header nav .form i {
   background-color: var(--mainColor);
   height: 100%;
   position: relative;
-  transition: width 1s;
+  transition: width 2s;
 }
 
 .prog span::before {
@@ -702,7 +700,7 @@ header nav .form i {
   margin-bottom: 0;
 }
 
-.price1 div ul li {
+.price1 div ul li:not(:last-child) {
   margin-bottom: 30px;
   padding: 20px;
   border-bottom: 1px solid var(--transparentColor);
